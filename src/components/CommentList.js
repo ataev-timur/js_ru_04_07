@@ -2,13 +2,15 @@ import React  from 'react'
 import Comment from './Comment'
 import toggleOpen from '../decorators/toggleOpen'
 import PropTypes from 'prop-types'
+import CommentForm from './CommentForm'
 
 function CommentList(props) {
     const { isOpen, toggleOpen } = props
     return (
         <div>
-            <button onClick = {toggleOpen}>{isOpen ? 'hide' : 'show'} comments</button>
+            <button onClick = {toggleOpen}>{isOpen ? 'hide' : 'show'} comments</button>            
             {getBody(props)}
+            <CommentForm />
         </div>
     )
 }
