@@ -8,25 +8,36 @@ class CommentForm extends Component {
     }
 
     state = {
-       user: '',
-       text: ''
+        user: '',
+        text: ''
     }
 
     render() {
         return (
             <div>
                 <p>Add comment</p>
-                user: <TextInput text={this.state.user} min={10} max={30} onChange={(value) => this.setState({user: value})}/>
+                user: <TextInput ref={this.setContainerRef('userInput')} text={this.state.user} min={10} max={30} />
                 <br />
-                text: <TextInput text={this.state.text} min={30} max={150} onChange={(value) => this.setState({text: value})}/>
+                text: <TextInput ref={this.setContainerRef('textInput')} text={this.state.text} min={30} max={150} />
                 <br />
                 <button onClick={this.handleSubmit}>Add Comment</button>
             </div>
         )
     }
 
+    setContainerRef = inputType => container => this[inputType] = container;
+
     handleSubmit = (ev) => {
-        console.log(this.state);
+        this.setState({
+            user: this.userInput.state.text,
+            text: this.textInput.state.text
+        });
+
+        if (this.userInput.state.isValid && this.textInput.state.isValid) {
+            alert('Ales Gut');
+        } else {
+            alert('Ales Nicht Arbaiten');
+        }
     }
 }
 

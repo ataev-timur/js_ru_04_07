@@ -21,7 +21,6 @@ class TextInput extends Component {
     }
     
     onChange = (ev) => {
-        console.log(ev.target.value, this.props.max, this.props.min)
         if (ev.target.value.length > this.props.max) {
             return this;
         }
@@ -30,8 +29,6 @@ class TextInput extends Component {
             text: ev.target.value,
             isValid: ev.target.value.length >= this.props.min
         })
-
-        this.props.onChange(ev.target.value);
     }
 }
 
